@@ -32,17 +32,12 @@ autocannon 'http://localhost:1234/test2/compute/gpu' -d 20 -c 7 -w 3  -t 10
 #### Pass Hacker Demo..
 
 This demo attempts to use brute force to discover the password ( in SHA-1 hash format).
-It takes the initial part of the session key (ip:port:salt), appends
-a possible secret key, takes the SHA-1 hash, and compares the result to a hash
-that is known to be good.
-
-This is a lot of computation, so hasspass offloads the secret key generation,
-SHA-1 calculation, and verification to the GPU using PyCUDA.  On my system, with
-a GeForce RTX 2060, it's capable of checking about 4M passwords per second.
-
+It takes the initial part of the "prefix:db, appends
+a possible passwrod, takes the SHA-1 hash, and compares the result to a hash
+that is known to be good. If hash matched, return found.
 The password supporse  is 9 characters of lowercase alpha and digits. Thus, a
 brute-force crack needs to try 36^9 keys, which take a lot of time to compute ( ~ 20 days).
-You can set to 6 for faster compuation.
+You can set to 6 for faster compuation. (36^6 keys)
 
 Run with:
 
