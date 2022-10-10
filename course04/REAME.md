@@ -1,2 +1,2 @@
 ### Julia
-- Julia 1.8
+- Julia 1.8 ( ubuntu 18.04 with GPU)
